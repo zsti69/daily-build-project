@@ -1,0 +1,82 @@
+#include <iostream>
+
+using namespace std;
+
+class Question
+{
+private:
+	string question,
+	string answers[3],
+	char answer;
+
+public:
+	Question(string _question, s char _answer)
+	{
+		question = _question;
+		answers = _answers;
+		answer = _answer;
+	}
+
+	string GetQuestion()
+	{
+		return question;
+	}
+
+	bool Check(char _answer)
+	{
+		return (_answer == answer);
+	}
+};
+
+vector<Question> Questions;
+
+void init()
+{
+	Questions.push_back(Question("test", {"test", "test", "test"}, 'A'));
+}
+
+int getQuestion(int id)
+{
+	cout << id << ". PYTANIE" << endl;
+	cout << "A. adss" << endl;
+	cout << "B. Asad" << endl;
+	cout << "C. adaw" << endl;
+	cout << "Odpowiedz: ";
+}
+
+bool checkAnswer(char answer)
+{
+	// A B C a b c   as int numbers
+	char valid[6] = {'A', 'B', 'C', 'a', 'b', 'c'};
+
+	for (int i = 0; i < 6; i++)
+	{
+		if (answer == valid[i])
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
+int main()
+{
+	init();
+
+	int id = 0;
+	char answer;
+
+	while(true)
+	{
+		getQuestion(id);
+		cin >> answer;
+
+		if (!checkAnswer(answer))
+		{
+			continue;
+		}
+
+		id ++;
+	}
+}
